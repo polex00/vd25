@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      text-shadow: 2px 2px 4px #724f96d1;
+      overflow: hidden;
+      position: relative;
+      background-image: url('images/background.png'); /* Add your background image here */
+      background-size: contain; /* Ensure the entire image is visible */
+      background-position: center; /* Center the background image */
+      background-repeat: no-repeat; /* Prevent the image from repeating */
+      background-color: #734f96; /* Fallback background color */
+    }
+
+    .content {
+      text-align: center;
+      z-index: 1;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+      border-radius: 10px; /* Rounded corners for the content box */
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #yesButton {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #noButton {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .thank-you {
+      display: none;
+      font-size: 2rem;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for the thank-you message */
+      padding: 20px;
+      border-radius: 10px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem; /* Smaller font size for tablets */
+      }
+
+      button {
+        padding: 8px 16px; /* Smaller buttons for tablets */
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem; /* Smaller font size for mobile phones */
+      }
+
+      button {
+        padding: 6px 12px; /* Smaller buttons for mobile phones */
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Will you be my Valentine?</h1>
+    <div class="buttons">
+      <button id="yesButton">Yes</button>
+      <button id="noButton">No</button>
+    </div>
+  </div>
+
+  <div class="thank-you">
+    <img src="images/vezenkov.jpg" alt="ja vezenkov">
+    <p>Diky mocc :*</p>
+    <!-- <p>Thank you, see ya!</p> -->
+  </div>
+
+  <script>
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const thankYouMessage = document.querySelector('.thank-you');
+    const content = document.querySelector('.content');
+
+    yesButton.addEventListener('click', () => {
+      content.style.display = 'none';
+      thankYouMessage.style.display = 'block';
+    });
+
+    noButton.addEventListener('click', () => {
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.position = 'absolute';
+      noButton.style.left = `${x}px`;
+      noButton.style.top = `${y}px`;
+    });
+  </script>
+</body>
+</html>
